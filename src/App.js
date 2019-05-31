@@ -1,8 +1,15 @@
 import React from "react";
-import { Button, Container, Navbar, Nav, NavDropdown, Image   } from 'react-bootstrap';
+import { Button, Container, Navbar, Nav, NavDropdown, Image, Tabs, Tab } from 'react-bootstrap';
 import axios from'axios';
 
+import { addToPathSrvQry, greyColor } from './constants'
 import { connect } from 'react-redux';
+
+
+import TabsMobile from './components/test'
+
+import { Swipeable } from 'react-touch';
+
 
 
 function mapStateToProps(state) {
@@ -13,55 +20,46 @@ function mapStateToProps(state) {
 
 class App extends React.Component {
 
-	//state = { name: 'React here!' }
+  state = {data: []}
 
+	//state = { name: 'React here!' }
 	async handleBtn(e) {
 
-		const {data} = await axios.get('https://kolodiva.com/about');
+    e && e.preventDefault();
+
+		const {data} = await axios.get(addToPathSrvQry + '/qry');
+
+    this.setState( { data: data } );
+
+    //alert( data );
 	    
 		//this.setState( { name: data } );
-		this.props.dispatch( { type: 'CNGE_NAME', payload: data } );
+		//this.props.dispatch( { type: 'CNGE_NAME', payload: data } );
 	}
 
+  componentDidMount() {
+
+    this.handleBtn();
+  }
+
 	render() {
-	  return (
+	  
+    return (
 
-	  	<div style={{ height: '100vh', width: '100vw', backgroundColor: '#00aec6'}}>
+	  	<div className='p-2 position-relative' style={{ height: '100vh', width: '100vw'}}>
 
-<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <Navbar.Brand href="#home">Vittorio&Glebbo</Navbar.Brand>
-  <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="mr-auto">
-      <Nav.Link href="#features">Новости</Nav.Link>
-      <Nav.Link href="#features">О компании</Nav.Link>
-      <Nav.Link href="#pricing">Номенклатура</Nav.Link>
-      <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-      </NavDropdown>
-    </Nav>
-    <Nav>
-      <Nav.Link href="#deets">More deets</Nav.Link>
-      <Nav.Link eventKey={2} href="#memes">
-        Dank memes
-      </Nav.Link>
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>
+          <TabsMobile />
 
-<div style={{textAlign: 'center', lineHeight: '70vh'}}>
-	<Image src="/public/zamok_138.jpg" fluid />
-</div>
+          { this.state.data.length === 0 ? null : 
+            
+            <div className='' style={{marginTop: '85px'}}>
+                { this.state.data.map( (rec, ind) => { return(<div key={ind} className='p-2'>{rec.name}</div>) } ) }
+            </div>
 
-<a href ='https://newfurnitura.ru/catalog/zamki' ><h2 style={{ textAlign: 'center', color: 'white' }}>Знаменитый замок 138</h2></a>
+          }
 
-</div>
-
-	);
+      </div>
+	   );
 	 }
 };
 
