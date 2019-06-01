@@ -10,19 +10,28 @@ var cors 	= require('cors');
 var app     = express();
 //var port    =   process.env.PORT || 8080;
 
-var port    =   8081;
+//var port    =   8081;
+var port    =   8080;
 
 var router 	= express.Router();
 
 var path 	= require('path');
 
 //
+// const db_set = {
+// 	user: 'postgres',
+//   	host: 'localhost',
+//   	database: 'orders',
+//   	password: '123',
+//   	port: 5432
+// };
+
 const db_set = {
-	user: 'postgres',
-  	host: 'localhost',
-  	database: 'orders',
-  	password: '123',
-  	port: 5432
+  user: 'testuser',
+    host: 'localhost',
+    database: 'statistica',
+    password: '123456',
+    port: 5432
 };
 
 const db = new Pool(db_set);
