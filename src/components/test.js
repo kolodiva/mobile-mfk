@@ -12,7 +12,7 @@ class TabsMobile extends React.Component {
 
     	<div className = 'mt-2 d-flex w-100 justify-content-around'>
     		<div className='m-1' style={{ width: '50px', height: '50px', borderRadius: '10px', border: '1px solid red' }}>
-    			<p className='text-center' style={{ lineHeight: '50px' }}>SOS</p>
+    			<p className='text-center' style={{ lineHeight: '50px' }}>НОМ</p>
     		</div>
     		<div className='m-1' style={{ width: '50px', height: '50px', borderRadius: '10px', border: '1px solid red' }}>
     			<p className='text-center' style={{ lineHeight: '50px' }}>AMBA</p>

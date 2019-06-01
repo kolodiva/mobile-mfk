@@ -52,8 +52,13 @@ class App extends React.Component {
 
           { this.state.data.length === 0 ? null : 
             
-            <div className='' style={{marginTop: '85px'}}>
-                { this.state.data.map( (rec, ind) => { return(<div key={ind} className='p-2'>{rec.name}</div>) } ) }
+            <div className='container d-flex flex-wrap' style={{marginTop: '85px'}}>
+                { this.state.data.map( (rec, ind) => { return(<div key={ind} className='p-2'>
+                                                                
+                                                                <img src={rec.guid_picture} style={{ maxHeight: '150px'}} />
+                                                                
+                                                                
+                                                              </div>) } ) }
             </div>
 
           }
@@ -65,3 +70,5 @@ class App extends React.Component {
 
 export default connect(mapStateToProps)(App);
 
+
+//<p className='ml-2'>{rec.name}</p>
