@@ -23,7 +23,7 @@ class App extends React.Component {
   state = {data: []}
 
 	//state = { name: 'React here!' }
-	async handleBtn(e) {
+	async handleBtn(e) { 
 
     e && e.preventDefault();
 

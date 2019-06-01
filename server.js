@@ -10,7 +10,7 @@ var cors 	= require('cors');
 var app     = express();
 //var port    =   process.env.PORT || 8080;
 
-var port    =   8080;
+var port    =   8081;
 
 var router 	= express.Router();
 
@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, '/dist')));
 
 // about page route (http://localhost:8080/about)
 router.get('/about', function(req, res) {
-    res.send('im the about page und Redux ---<<-!!!!>>----->'); 
+    res.send('im the about page und Redux ---<<-!-----555----!!!>>----->'); 
 });
 
 router.get('/text', function(req, res) {
