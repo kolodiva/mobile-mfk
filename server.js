@@ -70,7 +70,7 @@ router.get('/test', function(req, res) {
 
 router.get('/qry', function(req, res) {
   	
-  	const text = 'select name, guid_picture from nomenklators where parentguid is null order by sort_field';
+  	const text = "select name, guid_picture from nomenklators where parentguid is null and guid <> 'd6699c69-8e85-4709-9676-27a8c27c' order by sort_field";
   	//const values = [ req.params.id ]
   	const values = []
 

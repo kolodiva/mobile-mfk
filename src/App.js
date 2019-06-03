@@ -20,7 +20,7 @@ function mapStateToProps(state) {
 
 class App extends React.Component {
 
-  state = {data: []}
+  state = { data: [], countOnPage: 9, countAll: 0, curPage: 1 }
 
 	//state = { name: 'React here!' }
 	async handleBtn(e) { 
@@ -29,21 +29,61 @@ class App extends React.Component {
 
 		const {data} = await axios.get(addToPathSrvQry + '/qry');
 
-    this.setState( { data: data } );
+    //console.log( data.length )
+
+    this.setState( { data: data, countAll: data.length } );
 
     //alert( data );
 	    
 		//this.setState( { name: data } );
 		//this.props.dispatch( { type: 'CNGE_NAME', payload: data } );
+    window.rrr = this.state;
+
 	}
 
   componentDidMount() {
 
     this.handleBtn();
+
+    const h = window.height;
+    const w = window.width;
+
+    console.log( w, h );
+    
   }
 
 	render() {
-	  
+
+    const w = window.width;
+
+    let group = []
+
+        let i, k, j = Math.trunc(this.state.countAll/this.state.countOnPage) + (this.state.countAll%this.state.countOnPage === 0 ? 0:1);
+
+        for(k = 1; k <= j; k++) {
+
+          let tmp = [];
+
+          for(let r = (k-1)*this.state.countOnPage ; r < (k-1)*this.state.countOnPage + this.state.countOnPage; r++) { 
+
+            if (this.state.data[r]) {
+              tmp.push(
+                <div key={r} className='p-2'>
+                  <img src={this.state.data[r].guid_picture} style={{ maxHeight: '85px'}} />
+                </div>)
+                } 
+            }
+
+          //tmp = $(tmp);
+
+
+          group.push(<div key={k} className='d-flex justify-content-between flex-wrap' style={{ border: '0.5px solid blue', minWidth:'320px'}} >
+
+                  {tmp}
+                
+                </div>);
+          }
+
     return (
 
 	  	<div className='p-2 position-relative' style={{ height: '100vh', width: '100vw'}}>
@@ -52,13 +92,14 @@ class App extends React.Component {
 
           { this.state.data.length === 0 ? null : 
             
-            <div className='container d-flex flex-wrap' style={{marginTop: '85px'}}>
-                { this.state.data.map( (rec, ind) => { return(<div key={ind} className='p-2'>
-                                                                
-                                                                <img src={rec.guid_picture} style={{ maxHeight: '100px'}} />
-                                                                
-                                                                
-                                                              </div>) } ) }
+            <div className='container d-flex' style={{marginTop: '85px'}}>
+                
+                { 
+
+                    group
+
+                }
+
             </div>
 
           }

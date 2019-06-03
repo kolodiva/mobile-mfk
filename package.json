@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development --module-bind js=babel-loader",
-    "start": "webpack-dev-server --port 8080 --host 192.168.1.41 --mode development --open ",
+    "start": "webpack-dev-server --mode development --open ",
+    "_start_home": "webpack-dev-server --port 8080 --host 192.168.1.41 --mode development --open ",
     "build": "webpack --mode production --module-bind js=babel-loader"
   },
   "keywords": [],
