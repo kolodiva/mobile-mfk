@@ -48,7 +48,7 @@ const styles = {
     padding: 15,
     minHeight: 100,
     color: '#fff',
-    minHeight: '60vh',
+    minHeight: '65vh',
   },
   slide1: {
     backgroundColor: '#FEA900',
