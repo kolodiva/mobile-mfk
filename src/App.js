@@ -8,7 +8,7 @@ import TabsMobile from './components/test'
 
 import SwipeableViews from 'react-swipeable-views';
 import { virtualize } from 'react-swipeable-views-utils';
-import { autoPlay } from 'react-swipeable-views-utils';
+import { autoPlay }   from 'react-swipeable-views-utils';
 
 //import { Pagination } from 'react-native-snap-carousel';
 import Pagination from './components/Pagination';
@@ -17,23 +17,21 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
+import { makeStyles }         from '@material-ui/core/styles';
+import BottomNavigation       from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import HomeIcon from '@material-ui/icons/home';
-import NomenklIcon from '@material-ui/icons/ViewHeadline';
-import CourtIcon from '@material-ui/icons/ChildFriendly';
 
+import RestoreIcon    from '@material-ui/icons/Restore';
+import FavoriteIcon   from '@material-ui/icons/Favorite';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import HomeIcon       from '@material-ui/icons/Home';
+import NomenklIcon    from '@material-ui/icons/ViewHeadline';
+import CourtIcon      from '@material-ui/icons/ChildFriendly';
 
 
 import {blueColorMf, greyColorMf} from './constants/index'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
-
 
 const styles = {
   root: {
