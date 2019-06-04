@@ -1,16 +1,67 @@
-import React from "react";
-import { Button, Container, Navbar, Nav, NavDropdown, Image, Tabs, Tab } from 'react-bootstrap';
-import axios from'axios';
+import React, { useState, useEffect  } from "react";
 
 import { addToPathSrvQry, greyColor } from './constants'
-import { connect } from 'react-redux';
 
+import { connect } from 'react-redux';
 
 import TabsMobile from './components/test'
 
-import { Swipeable } from 'react-touch';
+import SwipeableViews from 'react-swipeable-views';
+import { virtualize } from 'react-swipeable-views-utils';
+import { autoPlay } from 'react-swipeable-views-utils';
+
+//import { Pagination } from 'react-native-snap-carousel';
+import Pagination from './components/Pagination';
+
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 
+import { makeStyles } from '@material-ui/core/styles';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import RestoreIcon from '@material-ui/icons/Restore';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import HomeIcon from '@material-ui/icons/home';
+import NomenklIcon from '@material-ui/icons/ViewHeadline';
+import CourtIcon from '@material-ui/icons/ChildFriendly';
+
+
+
+import {blueColorMf, greyColorMf} from './constants/index'
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
+
+
+const styles = {
+  root: {
+    position: 'relative'
+  },
+  tabs: {
+    background: '#fff',
+  },
+  slide: {
+    display: 'flex', 
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    padding: 15,
+    minHeight: 100,
+    color: '#fff',
+    minHeight: '60vh',
+  },
+  slide1: {
+    backgroundColor: '#FEA900',
+  },
+  slide2: {
+    backgroundColor: '#B3DC4A',
+  },
+  slide3: {
+    backgroundColor: '#6AC0FF',
+  },
+};
 
 function mapStateToProps(state) {
   return {
@@ -18,98 +69,71 @@ function mapStateToProps(state) {
   };
 }
 
-class App extends React.Component {
-
-  state = { data: [], countOnPage: 9, countAll: 0, curPage: 1 }
+function App() {
 
 	//state = { name: 'React here!' }
-	async handleBtn(e) { 
-
-    e && e.preventDefault();
-
-		const {data} = await axios.get(addToPathSrvQry + '/qry');
-
-    //console.log( data.length )
-
-    this.setState( { data: data, countAll: data.length } );
-
-    //alert( data );
-	    
-		//this.setState( { name: data } );
-		//this.props.dispatch( { type: 'CNGE_NAME', payload: data } );
-    window.rrr = this.state;
-
-	}
-
-  componentDidMount() {
-
-    this.handleBtn();
-
-    const h = window.height;
-    const w = window.width;
-
-    console.log( w, h );
-    
+  const [ index, setIndex ] = useState(0);
+  
+  const handleChange = (event, value) => {
+    setIndex(value);
   }
 
-	render() {
-
-    const w = window.width;
-
-    let group = []
-
-        let i, k, j = Math.trunc(this.state.countAll/this.state.countOnPage) + (this.state.countAll%this.state.countOnPage === 0 ? 0:1);
-
-        for(k = 1; k <= j; k++) {
-
-          let tmp = [];
-
-          for(let r = (k-1)*this.state.countOnPage ; r < (k-1)*this.state.countOnPage + this.state.countOnPage; r++) { 
-
-            if (this.state.data[r]) {
-              tmp.push(
-                <div key={r} className='p-2'>
-                  <img src={this.state.data[r].guid_picture} style={{ maxHeight: '85px'}} />
-                </div>)
-                } 
-            }
-
-          //tmp = $(tmp);
+  const handleChangeIndex = (index) => {
+    setIndex(index);
+  }
 
 
-          group.push(<div key={k} className='d-flex justify-content-between flex-wrap' style={{ border: '0.5px solid blue', minWidth:'320px'}} >
+  const Qd = () => {return <div className='m-1' style={{ height: '100px', width: '100px', backgroundColor: 'white' }}></div>}
 
-                  {tmp}
-                
-                </div>);
-          }
+  return (
 
-    return (
+  <div style={styles.root}>
 
-	  	<div className='p-2 position-relative' style={{ height: '100vh', width: '100vw'}}>
+        <Tabs value={index} variant="fullWidth" onChange={ handleChange } style={styles.tabs}>
+          <Tab label='' icon={<HomeIcon />} />
+          <Tab label="" icon={<NomenklIcon />} />
+          <Tab label="" icon={<CourtIcon />} />
+        </Tabs>
 
-          <TabsMobile />
+        <SwipeableViews  resistance enableMouseEvents index={index} onChangeIndex={ handleChangeIndex }>
+          <div className='' style={Object.assign({}, styles.slide, styles.slide1,)}>
+              <Qd />  
+              <Qd />  
+              <Qd />  
+              <Qd />  
+              <Qd />  
+              <Qd />  
+          </div>
+          
+          <div style={Object.assign({}, styles.slide, styles.slide2)}>
+              <Qd />  
+              <Qd />  
+              <Qd />  
+              <Qd />  
+              <Qd />  
+              <Qd />  
+          </div>
+          
+          <div style={Object.assign({}, styles.slide, styles.slide3)}>
+              <Qd />  
+              <Qd />  
+              <Qd />  
+              <Qd />  
+              <Qd />  
+              <Qd />  
+          </div>
 
-          { this.state.data.length === 0 ? null : 
-            
-            <div className='container d-flex' style={{marginTop: '85px'}}>
-                
-                { 
-
-                    group
-
-                }
-
-            </div>
-
-          }
-
+        </SwipeableViews>
+        <Pagination dots={3} index={index} onChangeIndex={ handleChangeIndex } />
       </div>
-	   );
-	 }
+     );
+
+
+	
+
 };
 
 export default connect(mapStateToProps)(App);
 
 
-//<p className='ml-2'>{rec.name}</p>
+

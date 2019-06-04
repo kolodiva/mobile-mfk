@@ -7,6 +7,7 @@
     "dev": "webpack --mode development --module-bind js=babel-loader",
     "start": "webpack-dev-server --mode development --open ",
     "_start_home": "webpack-dev-server --port 8080 --host 192.168.1.41 --mode development --open ",
+    "_start_job": "webpack-dev-server --port 8081 --host 10.1.0.123 --mode development --open ",
     "build": "webpack --mode production --module-bind js=babel-loader"
   },
   "keywords": [],
@@ -38,6 +39,8 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
+    "@material-ui/core": "^4.0.2",
+    "@material-ui/icons": "^4.0.1",
     "axios": "^0.18.0",
     "body-parser": "^1.19.0",
     "connected-react-router": "^6.4.0",
@@ -46,10 +49,16 @@
     "express": "^4.17.1",
     "forever": "^1.0.0",
     "history": "^4.9.0",
+    "prop-types": "^15.7.2",
     "react-bootstrap": "^1.0.0-beta.8",
+    "react-native": "^0.59.8",
+    "react-native-snap-carousel": "^3.8.0",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-router-redux": "^4.0.8",
+    "react-swipeable-views": "^0.13.3",
+    "react-swipeable-views-native": "^0.13.2",
+    "react-swipeable-views-utils": "^0.13.3",
     "react-touch": "^0.4.4",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",

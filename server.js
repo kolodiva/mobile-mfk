@@ -18,21 +18,21 @@ var router 	= express.Router();
 var path 	= require('path');
 
 //
-// const db_set = {
-// 	user: 'postgres',
-//   	host: 'localhost',
-//   	database: 'orders',
-//   	password: '123',
-//   	port: 5432
-// };
-
 const db_set = {
-  user: 'testuser',
-    host: 'localhost',
-    database: 'statistica',
-    password: '123456',
-    port: 5432
+	user: 'postgres',
+  	host: 'localhost',
+  	database: 'orders',
+  	password: '123',
+  	port: 5432
 };
+
+// const db_set = {
+//   user: 'testuser',
+//     host: 'localhost',
+//     database: 'statistica',
+//     password: '123456',
+//     port: 5432
+// };
 
 const db = new Pool(db_set);
 

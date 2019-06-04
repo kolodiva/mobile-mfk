@@ -18,7 +18,7 @@ class TabsMobile extends React.Component {
 	  
     return (
 
-    	<div className = 'fixed-top' style={{ backgroundColor: 'white' }}>
+    	<div id='header' className = 'fixed-top pb-2' style={{ backgroundColor: 'white' }}>
 
 	    	<div className = 'mt-2 d-flex w-100 justify-content-around'>
 	    		<div className='m-1' style={ styleSquare }>
@@ -38,11 +38,7 @@ class TabsMobile extends React.Component {
 	    		</div>
 	    	</div>
 
-	    	 <div className='mt-3' style={{ borderBottom: `2px solid ${ blueColorMf }` }}/>
-
     	 </div>
-
-
 
 	   );
 	 }
