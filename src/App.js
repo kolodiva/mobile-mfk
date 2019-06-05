@@ -27,6 +27,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import HomeIcon       from '@material-ui/icons/Home';
 import NomenklIcon    from '@material-ui/icons/ViewHeadline';
 import CourtIcon      from '@material-ui/icons/ChildFriendly';
+import PhoneIcon      from '@material-ui/icons/Phone';
 
 
 import {blueColorMf, greyColorMf} from './constants/index'
@@ -89,7 +90,7 @@ function App() {
 
         <Tabs value={index} variant="fullWidth" onChange={ handleChange } style={styles.tabs}>
           <Tab label='' icon={<HomeIcon />} />
-          <Tab label="" icon={<NomenklIcon />} />
+          <Tab label="" icon={<PhoneIcon />} />
           <Tab label="" icon={<CourtIcon />} />
         </Tabs>
 
@@ -104,12 +105,11 @@ function App() {
           </div>
           
           <div style={Object.assign({}, styles.slide, styles.slide2)}>
-              <Qd />  
-              <Qd />  
-              <Qd />  
-              <Qd />  
-              <Qd />  
-              <Qd />  
+
+              <h5><a href="tel:+7-495-050-0075">Позвонить папе Карло в Москоу +7-495-050-0075</a></h5>
+              <h5><a href="tel:+7-843-211-9918">Позвонить папе Карло в Казань +7-843-211-9918</a></h5>
+              <h5><a href="skype:kolodiva?call">Позвонить папе Карло в Скайп</a></h5>
+
           </div>
           
           <div style={Object.assign({}, styles.slide, styles.slide3)}>
